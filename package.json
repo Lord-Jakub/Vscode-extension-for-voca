@@ -1,0 +1,26 @@
+{
+  "name": "voca",
+  "displayName": "Voca",
+  "description": "",
+  "version": "0.0.2",
+  "publisher": "LordJakub",
+  "engines": {
+    "vscode": "^1.84.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [{
+      "id": "voca",
+      "aliases": ["Voca", "voca"],
+      "extensions": [".v"],
+      "configuration": "./language-configuration.json"
+    }],
+    "grammars": [{
+      "language": "voca",
+      "scopeName": "source.voca",
+      "path": "./syntaxes/voca.tmLanguage.json"
+    }]
+  }
+}

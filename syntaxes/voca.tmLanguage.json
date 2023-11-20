@@ -1,0 +1,127 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "Voca",
+	"scopeName": "source.voca",
+	"patterns": [
+		{
+			"include": "#keywords"
+		},
+		{
+			"include": "#strings"
+		},
+		{
+			"include": "#functions"
+		},
+		{
+			"include": "#variables"
+		},
+		{
+			"include": "#comments"
+		},
+		{
+			"include": "#assignments"
+		}
+	],
+	"repository": {
+		"keywords": {
+			"patterns": [
+				{
+					"name": "keyword.control.voca",
+					"match": "\\b(if|while|print|return|import|func|var)\\b"
+				}
+			]
+		},
+		"strings": {
+			"patterns": [
+				{
+					"name": "string.quoted.double.voca",
+					"begin": "\"",
+					"end": "\"",
+					"patterns": [
+						{
+							"name": "constant.character.escape.voca",
+							"match": "\\\\."
+						}
+					]
+				},
+				{
+					"name": "string.quoted.single.voca",
+					"begin": "'",
+					"end": "'",
+					"patterns": [
+						{
+							"name": "constant.character.escape.voca",
+							"match": "\\\\."
+						}
+					]
+				}
+			]
+		},
+		"functions": {
+			"patterns": [
+				{
+					"name": "meta.function.voca",
+					"match": "\\bfunc\\s+([a-zA-Z_][a-zA-Z0-9_]*)\\s*\\("
+				},
+				{
+					"name": "entity.name.function.voca",
+					"match": "\\s+([a-zA-Z_][a-zA-Z0-9_]*)\\s*\\("
+				},
+				{
+					"name": "support.other",
+					"match": "\\b([a-zA-Z_][a-zA-Z0-9_]*)\\s*\\."
+				},
+				{
+					"name": "entity.name.function.voca",
+					"match": "\\b.([a-zA-Z_][a-zA-Z0-9_]*)\\s*\\("
+				}
+			]
+		},
+		"variables": {
+			"patterns": [
+				{
+					"name": "variable.other.var.voca",
+					"match": "\\bvar\\s+([a-zA-Z_][a-zA-Z0-9_]*)\\s*="
+				},
+				{
+					"name": "variable.other.var.voca",
+					"match": "\\b([a-zA-Z_][a-zA-Z0-9_]*)\\b"
+				}
+			]
+		},
+		"assignments": {
+			"patterns": [
+				{
+					"captures": {
+						"1": {
+							"name": "variable.other.var.voca"
+						}
+					},
+					"match": "\\b([a-zA-Z_][a-zA-Z0-9_]*)\\s*="
+				},
+				{
+					"begin": "\\b([a-zA-Z_][a-zA-Z0-9_]*)\\s*\\(",
+					"end": "\\)",
+					"captures": {
+						"1": {
+							"name": "entity.name.function.voca"
+						}
+					}
+				}
+			]
+		},
+		"comments": {
+			"patterns": [
+				{
+					"name": "comment.line.voca",
+					"match": "//.*$"
+				},
+				{
+					"name": "comment.block.voca",
+					"begin": "/\\*",
+					"end": "\\*/"
+				}
+			]
+		}
+	}
+}
